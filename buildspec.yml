@@ -4,14 +4,17 @@ phases:
 
   install: 
     commands:
-      - go get -u github.com/golang/lint/golint
-      - go get -u github.com/gruntwork-io/terratest/modules/terraform
+      - go get github.com/golang/lint/golint
+      - go get github.com/gruntwork-io/terratest/modules/terraform
 
   pre_build: 
     commands:
 
       # Ensure code passes all lint tests
       - golint -set_exit_status
+
+      # install dependencies
+      - dep ensure
 
   build:
     commands:
