@@ -16,7 +16,7 @@ phases:
     commands:
 
       # Run basic FT test
-      - go test terraform_basic_example_test.go
+      - go test test/terraform_basic_example_test.go
 
 artifacts:
   files:
