@@ -6,6 +6,8 @@ phases:
     commands:
       - go get github.com/golang/lint/golint
       - go get github.com/gruntwork-io/terratest/modules/terraform
+      - wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip
+      - unzip terraform_0.11.8_linux_amd64.zip
 
   pre_build: 
     commands:
