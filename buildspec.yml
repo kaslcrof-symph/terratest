@@ -23,7 +23,7 @@ phases:
   build:
     commands:
 
-      # Run basic FT test
+      # Run basic TF test
       - go test test/terraform_basic_example_test.go
 
 artifacts:
