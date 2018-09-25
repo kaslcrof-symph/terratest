@@ -27,7 +27,7 @@ phases:
       - go test test/terraform_basic_example_test.go
 
       # Run AWS TF test
-      - go test test/terraform_http_example_test.go
+      - go test test/terraform_aws_example_test.go
 
 artifacts:
   files:
