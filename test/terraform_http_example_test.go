@@ -27,7 +27,8 @@ func TestTerraformHttpExample(t *testing.T) {
 	instanceText := fmt.Sprintf("Hello, %s!", uniqueID)
 
 	// Pick a random AWS region to test in. This helps ensure your code works in all regions.
-	awsRegion := aws.GetRandomRegion(t, nil, nil)
+	// awsRegion := aws.GetRandomRegion(t, nil, nil)
+	awsRegion := "us-west-2"
 
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
