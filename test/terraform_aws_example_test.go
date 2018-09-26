@@ -3,6 +3,7 @@ package test
 import (
 	"fmt"
 	"testing"
+	"time"
 
 	"github.com/gruntwork-io/terratest/modules/aws"
 	"github.com/gruntwork-io/terratest/modules/random"
@@ -44,6 +45,12 @@ func TestTerraformAwsExample(t *testing.T) {
 
 	// Run `terraform output` to get the value of an output variable
 	instanceID := terraform.Output(t, terraformOptions, "instance_id")
+
+	// Wait for instance to init
+	time.Sleep(15 * time.Second)
+
+	// Add tags to new instance
+	fmt.Printf("Tagging the instance: %s\n", instanceID)
 
 	aws.AddTagsToResource(t, awsRegion, instanceID, map[string]string{"testing": "testing-tag-value"})
 
