@@ -53,7 +53,7 @@ func TestTerraformAwsExample(t *testing.T) {
 	// Look up the tags for the given Instance ID
 	instanceTags := aws.GetTagsForEc2Instance(t, awsRegion, instanceID)
 
-	testingTag, containsTestingTag := instanceTags["testing"]
+	// testingTag, containsTestingTag := instanceTags["testing"]
 	// assert.True(t, containsTestingTag)
 	// assert.Equal(t, "testing-tag-value", testingTag)
 
