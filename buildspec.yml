@@ -10,6 +10,7 @@ phases:
       - go get github.com/aws/aws-sdk-go/aws
       - go get github.com/go-sql-driver/mysql
       - go get github.com/google/uuid
+      - go get github.com/pquerna/otp/totp
       - wget -q https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip
       - unzip terraform_0.11.8_linux_amd64.zip
       - echo $PATH
