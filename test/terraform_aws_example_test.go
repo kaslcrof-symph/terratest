@@ -47,7 +47,7 @@ func TestTerraformAwsExample(t *testing.T) {
 	instanceID := terraform.Output(t, terraformOptions, "instance_id")
 
 	// Wait for instance to init
-	time.Sleep(15 * time.Second)
+	time.Sleep(60 * time.Second)
 
 	// Add tags to new instance
 	fmt.Printf("Tagging the instance: %s\n", instanceID)
