@@ -28,6 +28,7 @@ func TestTerraformAwsExample(t *testing.T) {
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
 			"instance_name": expectedName,
+			"aws_region":    awsRegion,
 		},
 
 		// Environment variables to set when running Terraform
