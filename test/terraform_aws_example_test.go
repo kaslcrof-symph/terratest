@@ -32,9 +32,9 @@ func TestTerraformAwsExample(t *testing.T) {
 		},
 
 		// Environment variables to set when running Terraform
-		EnvVars: map[string]string{
-			"AWS_DEFAULT_REGION": awsRegion,
-		},
+		// EnvVars: map[string]string{
+		// 	"AWS_DEFAULT_REGION": awsRegion,
+		// },
 	}
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created
