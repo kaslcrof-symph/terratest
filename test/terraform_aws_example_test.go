@@ -19,7 +19,7 @@ func TestTerraformAwsExample(t *testing.T) {
 	expectedName := fmt.Sprintf("terratest-aws-example-%s", random.UniqueId())
 
 	// Pick a random AWS region to test in. This helps ensure your code works in all regions.
-	awsRegion := aws.GetRandomRegion(t, []string{"us-east-1"}, nil)
+	awsRegion := aws.GetRandomRegion(t, []string{"us-west-2"}, nil)
 
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
