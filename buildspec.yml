@@ -10,6 +10,8 @@ phases:
       - unzip terraform_0.11.8_linux_amd64.zip
       - echo $PATH
       - cp terraform /usr/local/bin
+      - set |grep REGION
+      - cat $HOME/.aws/credentials |grep region
 
   pre_build: 
     commands:
