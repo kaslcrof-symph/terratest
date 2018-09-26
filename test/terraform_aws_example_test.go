@@ -19,7 +19,7 @@ func TestTerraformAwsExample(t *testing.T) {
 	expectedName := fmt.Sprintf("terratest-aws-example-%s", random.UniqueId())
 
 	// Pick a random AWS region to test in. This helps ensure your code works in all regions.
-	awsRegion := aws.GetRandomRegion(t, nil, nil)
+	awsRegion := aws.GetRandomRegion(t, []string{"us-east-1"}, nil)
 
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
@@ -28,13 +28,13 @@ func TestTerraformAwsExample(t *testing.T) {
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
 			"instance_name": expectedName,
-			"aws_region":    awsRegion,
+		//	"aws_region":    awsRegion,
 		},
 
 		// Environment variables to set when running Terraform
-		// EnvVars: map[string]string{
-		// 	"AWS_DEFAULT_REGION": awsRegion,
-		// },
+		EnvVars: map[string]string{
+			"AWS_DEFAULT_REGION": awsRegion,
+		},
 	}
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created
