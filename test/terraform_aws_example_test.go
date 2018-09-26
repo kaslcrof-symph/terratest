@@ -3,7 +3,6 @@ package test
 import (
 	"fmt"
 	"testing"
-	"time"
 
 	"github.com/gruntwork-io/terratest/modules/aws"
 	"github.com/gruntwork-io/terratest/modules/random"
@@ -48,9 +47,7 @@ func TestTerraformAwsExample(t *testing.T) {
 
 	// Add tags to new instance
 	fmt.Printf("Tagging the instance: %s\n", instanceID)
-
-	// aws.AddTagsToResource(t, awsRegion, instanceID, map[string]string{"testing": "testing-tag-value"})
-	aws.AddTagsToResource(t, instanceID, map[string]string{"testing": "testing-tag-value"})
+	aws.AddTagsToResource(t, awsRegion, instanceID, map[string]string{"testing": "testing-tag-value"})
 
 	// Look up the tags for the given Instance ID
 	instanceTags := aws.GetTagsForEc2Instance(t, awsRegion, instanceID)
