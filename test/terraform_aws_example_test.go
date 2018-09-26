@@ -19,7 +19,8 @@ func TestTerraformAwsExample(t *testing.T) {
 	expectedName := fmt.Sprintf("terratest-aws-example-%s", random.UniqueId())
 
 	// Pick a random AWS region to test in. This helps ensure your code works in all regions.
-	awsRegion := aws.GetRandomRegion(t, []string{"us-west-2"}, nil)
+	// awsRegion := aws.GetRandomRegion(t, nil, nil)
+        awsRegion := aws.GetRandomRegion(t, []string{"us-west-2"}, nil)
 
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
@@ -28,7 +29,6 @@ func TestTerraformAwsExample(t *testing.T) {
 		// Variables to pass to our Terraform code using -var options
 		Vars: map[string]interface{}{
 			"instance_name": expectedName,
-			"aws_region":    awsRegion,
 		},
 
 		// Environment variables to set when running Terraform
@@ -46,17 +46,14 @@ func TestTerraformAwsExample(t *testing.T) {
 	// Run `terraform output` to get the value of an output variable
 	instanceID := terraform.Output(t, terraformOptions, "instance_id")
 
-	// Add tags to new instance
-	// fmt.Printf("Tagging the instance: %s\n", instanceID)
-
-	// aws.AddTagsToResource(t, awsRegion, instanceID, map[string]string{"testing": "testing-tag-value"})
+	aws.AddTagsToResource(t, awsRegion, instanceID, map[string]string{"testing": "testing-tag-value"})
 
 	// Look up the tags for the given Instance ID
 	instanceTags := aws.GetTagsForEc2Instance(t, awsRegion, instanceID)
 
-	// testingTag, containsTestingTag := instanceTags["testing"]
-	// assert.True(t, containsTestingTag)
-	// assert.Equal(t, "testing-tag-value", testingTag)
+	testingTag, containsTestingTag := instanceTags["testing"]
+	assert.True(t, containsTestingTag)
+	assert.Equal(t, "testing-tag-value", testingTag)
 
 	// Verify that our expected name tag is one of the tags
 	nameTag, containsNameTag := instanceTags["Name"]
