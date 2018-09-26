@@ -46,13 +46,11 @@ func TestTerraformAwsExample(t *testing.T) {
 	// Run `terraform output` to get the value of an output variable
 	instanceID := terraform.Output(t, terraformOptions, "instance_id")
 
-	// Wait for instance to init
-	time.Sleep(10 * time.Second)
-
 	// Add tags to new instance
 	fmt.Printf("Tagging the instance: %s\n", instanceID)
 
-	aws.AddTagsToResource(t, awsRegion, instanceID, map[string]string{"testing": "testing-tag-value"})
+	// aws.AddTagsToResource(t, awsRegion, instanceID, map[string]string{"testing": "testing-tag-value"})
+	aws.AddTagsToResource(t, instanceID, map[string]string{"testing": "testing-tag-value"})
 
 	// Look up the tags for the given Instance ID
 	instanceTags := aws.GetTagsForEc2Instance(t, awsRegion, instanceID)
