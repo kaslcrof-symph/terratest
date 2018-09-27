@@ -20,7 +20,8 @@ func TestTerraformAwsExample(t *testing.T) {
 
 	// Pick a random AWS region to test in. This helps ensure your code works in all regions.
 	// awsRegion := aws.GetRandomRegion(t, nil, nil)
-	awsRegion := aws.GetRandomRegion(t, []string{"us-west-2"}, []string{})
+	//awsRegion := aws.GetRandomRegion(t, []string{"us-west-2"}, )
+  awsRegion := "eu-central-1"
 
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
