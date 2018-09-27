@@ -28,7 +28,7 @@ phases:
       # Show envs
       - env
       # sho tree structure of the aws env
-      - tree 
+      - ls -R
       # Run basic TF test
       - go test -v test/terraform_basic_example_test.go
 
