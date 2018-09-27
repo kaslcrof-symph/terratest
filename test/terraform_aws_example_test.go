@@ -20,8 +20,8 @@ func TestTerraformAwsExample(t *testing.T) {
 
 	// Pick a random AWS region to test in. This helps ensure your code works in all regions.
 	// awsRegion := aws.GetRandomRegion(t, nil, nil)
-	awsRegion := aws.GetRandomRegion(t, []string{"us-west-2"}, []string{})
-  //awsRegion := "eu-central-1"
+	//awsRegion := aws.GetRandomRegion(t, nil, nil)
+  awsRegion := "eu-central-1"
 
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
@@ -34,7 +34,7 @@ func TestTerraformAwsExample(t *testing.T) {
 
 		// Environment variables to set when running Terraform
 		EnvVars: map[string]string{
-			"TF_aws_region": awsRegion,
+			"AWS_DEFAULT_REGION": awsRegion,
 		},
 	}
 
