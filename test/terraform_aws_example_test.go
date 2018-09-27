@@ -34,7 +34,7 @@ func TestTerraformAwsExample(t *testing.T) {
 
 		// Environment variables to set when running Terraform
 		EnvVars: map[string]string{
-			"AWS_DEFAULT_REGION": awsRegion,
+			"AWS_REGION": awsRegion,
 		},
 	}
 

@@ -2,6 +2,9 @@
 # DEPLOY AN EC2 INSTANCE RUNNING UBUNTU
 # See test/terraform_aws_example_test.go for how to write automated tests for this code.
 # ---------------------------------------------------------------------------------------------------------------------
+provider "aws" {
+  region = "${var.aws_region}"
+}
 
 resource "aws_instance" "example" {
   ami           = "${data.aws_ami.ubuntu.id}"
