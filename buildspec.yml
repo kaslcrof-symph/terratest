@@ -2,7 +2,7 @@ version: 0.2
 
 phases:
 
-  install: 
+  install:
     commands:
       - go get github.com/golang/lint/golint
       - go get github.com/gruntwork-io/terratest/modules/terraform
@@ -16,7 +16,7 @@ phases:
       - echo $PATH
       - cp terraform /usr/local/bin
 
-  pre_build: 
+  pre_build:
     commands:
 
       # Ensure code passes all lint tests
@@ -26,13 +26,11 @@ phases:
     commands:
 
       # Run basic TF test
-      - go test test/terraform_basic_example_test.go
+      - go test -v test/terraform_basic_example_test.go
 
       # Run AWS TF test
-      - go test test/terraform_aws_example_test.go
+      - go test -v test/terraform_aws_example_test.go
 
 artifacts:
   files:
     - buildspec.yml
-
-
