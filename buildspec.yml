@@ -25,6 +25,10 @@ phases:
   build:
     commands:
 
+      # Show envs
+      - env
+      # sho tree structure of the aws env
+      - tree 
       # Run basic TF test
       - go test -v test/terraform_basic_example_test.go
 
@@ -34,5 +38,3 @@ phases:
 artifacts:
   files:
     - buildspec.yml
-
-
